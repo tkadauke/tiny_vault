@@ -1,0 +1,6 @@
+<%= tabs(:selected => selected) do |a| %>
+  <% a.tab :information, t(".information"), account_site_login_path(@account, @site, @login) %>
+  <% if current_user.can_edit_logins?(@account) %>
+    <% a.tab :edit, t('.edit'), edit_account_site_login_path(@account, @site, @login) %>
+  <% end %>
+<% end %>

@@ -1,0 +1,17 @@
+<h2><%= t('.logins_for_site', :site => @site.name) %></h2>
+
+<%= render :partial => "/sites/tabs", :locals => { :selected => :logins } %>
+
+<%= render :partial => "/shared/filter", :locals => { :url => account_site_logins_path(@account, @site, :report => params[:report]) } %>
+
+<div id="checks">
+  <%= render :partial => "list" %>
+</div>
+
+<% if current_user.can_create_logins?(@account) %>
+  <p>
+    <%= action_list do |a| %>
+      <% a.link_to t('.new_login'), new_account_site_login_path(@account, @site) %>
+    <% end %>
+  </p>
+<% end %>

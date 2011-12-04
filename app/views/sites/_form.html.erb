@@ -1,0 +1,25 @@
+<%= form_for [@account, @site], :html => { :class => 'form' } do |f| %>
+  <%= f.error_messages :header_message => t('.could_not_create_site') %>
+  
+  <p class="form_item">
+    <span class="label"><%= f.label :name, t('.name'), :class => 'required' %></span>
+    <%= f.text_field :name %>
+  </p>
+
+  <p class="form_item">
+    <span class="label"><%= f.label :description, t('.description') %></span>
+    <%= f.text_field :description %>
+  </p>
+
+  <p class="form_item">
+    <span class="label"><%= f.label :home_url, t('.home_url'), :class => 'required' %></span>
+    <%= f.text_field :home_url %>
+  </p>
+  
+  <p class="form_item">
+    <span class="label"><%= f.label :login_url, t('.login_url'), :class => 'required' %></span>
+    <%= f.text_field :login_url %>
+  </p>
+  
+  <p><%= f.submit t('.save_site') %></p>
+<% end %>

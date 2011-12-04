@@ -1,0 +1,18 @@
+- language:
+    name:
+      en: "Language"
+      de: "Sprache"
+    type: String
+    default: en
+    values:
+      English: en
+      Deutsch: de
+- email_enabled:
+    name:
+      en: "Email notifications enabled"
+      de: "E-Mail-Benachrichtigungen aktivieren"
+    description:
+      en: "Whether or not email notifications are delivered to you."
+      de: "Gibt an, ob Benachrichtigungen per E-Mail an Sie geschickt werden."
+    type: Boolean
+    default: true

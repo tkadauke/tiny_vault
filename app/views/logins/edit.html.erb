@@ -1,0 +1,5 @@
+<h2><%= t('.edit_login_for_site', :login => @login.description, :site => @site.name) %></h2>
+
+<%= render :partial => "tabs", :locals => { :selected => :edit } %>
+
+<%= render :partial => "form" %>

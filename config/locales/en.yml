@@ -1,0 +1,345 @@
+--- 
+en: 
+  account: 
+    role: 
+      admin: Admin
+      observer: Observer
+      user: User
+  accounts: 
+    edit: 
+      edit_account: "Edit Account"
+    form: 
+      could_not_create_account: "Could not create account"
+      name: Name
+      name_hint: "For example your organization's name"
+      save_account: "Save account"
+    index: 
+      details: Details
+      edit: Edit
+      name: Name
+      new_account: "New Account"
+      options: Options
+    info: 
+      login_count:
+        one: "1 login"
+        other: "%{count} logins"
+      name: "Name"
+      sites_count:
+        one: "1 site"
+        other: "%{count} sites"
+      statistics: "Statistics"
+    new: 
+      new_account: "New Account"
+    show: 
+      account: "Account %{account}"
+      add_existing: "Add existing user to this account"
+      add_new: "Register new user for this account"
+      change: Change
+      name: Name
+      options: Options
+      really_remove_user_from_account: "Do you really want to remove the user from this account?"
+      remove: Remove
+      role: Role
+      users: Users
+    tabs: 
+      edit: Edit
+      information: Information
+  activerecord: 
+    errors: 
+      models: 
+        user_account: 
+          attributes: 
+            email: 
+              not_found: "does not belong to an existing user"
+  admin: 
+    accounts: 
+      edit: 
+        could_not_update_account: "Could not update account"
+        edit_account: "Edit account"
+        name: Name
+        save_account: "Save account"
+      index: 
+        all_accounts: "All accounts"
+        name: Name
+        no_accounts: "There are no accounts yet"
+        options: Options
+        users: Users
+      show: 
+        account: "Account %{account}"
+        no_users: "no users yet"
+        users: Users
+      tabs: 
+        edit: Edit
+        information: Information
+    footer_links: 
+      edit: 
+        edit_footer_link: "Edit footer link"
+      form: 
+        could_not_create_footer_link: "Could not add footer link"
+        save_footer_link: "Save footer link"
+        text: "Link text"
+        url: "Target URL"
+      index: 
+        drag_to_sort: "Drag the arrows to reorder footer links"
+        edit: Edit
+        footer_links: "Footer links"
+        name: "Link text"
+        new_footer_link: "Add footer link"
+        nothing_found: "Nothing found"
+        options: Options
+        really_remove_footer_link: "Do you really want to remove this footer link? This operation can not be undone."
+        remove: Remove
+        url: "Target URL"
+      new: 
+        new_footer_link: "New footer link"
+    index: 
+      accounts: Accounts
+      admin_area: "Admin Area"
+      footer_links: "Footer Links"
+      users: Users
+    users: 
+      index: 
+        accounts: Accounts
+        all_users: "All Users"
+        email: Email
+        name: Name
+        no_users: "No users found."
+        options: Options
+  authlogic: 
+    error_messages: 
+      password_blank: "can not be blank"
+  breadcrumb: 
+    accounts: Accounts
+    admin: Administration
+    edit: Edit
+    edit_multiple: "Bulk edit"
+    footer_links: "Footer links"
+    home: Home
+    logins: Logins
+    new: New
+    password_resets: "Reset password"
+    settings: Settings
+    sites: Sites
+    user_accounts: Users
+    users: Users
+  errors: 
+    ? "404"
+    : 
+      error_message: "You may have mistyped the address or the page may have moved."
+      title: "The page you were looking for doesn't exist."
+    ? "422"
+    : 
+      error_message: "Maybe you tried to change something you didn't have access to."
+      title: "The change you wanted was rejected."
+    ? "500"
+    : 
+      error_message: "We've been notified about this issue and we'll take a look at it shortly."
+      title: "We're sorry, but something went wrong."
+  flash: 
+    error: 
+      access_denied: "Access denied"
+      assign_roles: "Could not assign account role to user"
+      create_account_first: "You need to be assigned to an account first"
+      guest_required: "You must be logged out to access this page"
+      login_required: "You must be logged in to access this page"
+      user_by_email_not_found: "No user was found with that email address"
+      user_could_not_be_located: "We're sorry, but we could not locate your account. If you are having issues try copying and pasting the URL from your email into your browser or restarting the reset password process."
+    notice: 
+      assign_roles: "Successfully assigned account role to user"
+      bulk_updated_logins: 
+        one: "Successfully updated 1 login"
+        other: "Successfully updated %{count} logins"
+      created_account: "Successfully created account %{account}"
+      created_footer_link: "Successfully created footer link"
+      created_login: "Successfully created login %{login}"
+      created_site: "Successfully created site %{site}"
+      created_user: "Successfully created user"
+      created_user_account: "Successfully added this user to the account"
+      deleted_login: "Successfully deleted login %{login}"
+      deleted_site: "Successfully deleted site %{site}"
+      logged_in: "Successfully logged in"
+      logged_out: "Successfully logged out"
+      password_instructions_sent: "Instructions to reset your password have been emailed to you. Please check your email."
+      password_updated: "Password successfully updated"
+      removed_footer_link: "Successfully removed footer link"
+      removed_user_account: "Successfully removed user from this account"
+      switched_account: "Successfully switched to account %{account}"
+      updated_account: "Successfully updated account %{account}"
+      updated_footer_link: "Successfully updated footer link"
+      updated_login: "Successfully updated login %{login}"
+      updated_settings: "Successfully updated settings"
+      updated_site: "Successfully updated site %{site}"
+      updated_user: "Successfully updated user"
+  layouts: 
+    accounts: Accounts
+    admin: Admin
+    close_flash: Close
+    edit_footer: "Edit footer"
+    github_project_page: "Github project page"
+    guest_greeter: "Welcome, Guest!"
+    home: Home
+    login: Login
+    logout: Logout
+    quick_links: "Quick links"
+    signup: Signup
+    sites: Sites
+    subtitle: "Group Password Store"
+    unknown_build: unknown
+    user_greeter: "Welcome, %{user}"
+    version: "Version %{version}, revision %{revision}"
+    you_are_here: "You are here"
+  logins: 
+    edit: 
+      edit_login_for_site: "Edit login for site %{site}"
+    fill: 
+      error: 
+        not_logged_in: "You are not logged into TinyVault"
+        site_not_found: "The current site was not found in TinyVault account '%{account}'"
+    edit_multiple: 
+      check_fields_you_want_to_change: "Check the fields you want to change."
+      description: Description
+      edit_multiple_logins: 
+        one: "Edit 1 login"
+        other: "Edit %{count} logins"
+      password: "Password"
+      show_all: "Show all"
+      update_logins: "Update logins"
+      username: "Username"
+    form: 
+      could_not_create_login: "Could not create login"
+      description: Description
+      password: "Password"
+      save_login: "Save login"
+      username: "Username"
+    index: 
+      logins_for_site: "Logins for Site %{site}"
+      new_login: "New login"
+    list: 
+      all: "Select all"
+      delete: Delete
+      description: "Description"
+      edit: Edit
+      edit_checked: "Edit Selected"
+      invert: "Invert selection"
+      none: "Select none"
+      options: Options
+      really_delete_login: "Do you really want to delete this login? This operation can not be undone."
+      site: Site
+      username: "Username"
+    new: 
+      new_login_for_site: "New Login for Site %{site}"
+    tabs: 
+      edit: "Edit"
+      information: "Information"
+  password_reset_mailer: 
+    subject: "Password Reset Instructions"
+  password_resets: 
+    edit: 
+      change_password: "Change My Password"
+      could_not_reset_password: "Could not reset password"
+      password: Password
+      password_confirmation: "Confirm password"
+      update: "Update my password and log me in"
+    index: 
+      instructions: "Please check your email for instructions how to change your password."
+    new: 
+      email: "E-mail address"
+      forgot_password: "Forgot Password"
+      instructions: "Fill out the form below and instructions to reset your password will be emailed to you."
+      reset: "Reset my password"
+  settings: 
+    show: 
+      settings: Settings
+      update: Update
+  shared: 
+    filter: 
+      filter: Filter
+  sites: 
+    edit: 
+      edit_site: "Edit Site %{site}"
+    form: 
+      could_not_create_site: "Could not create site"
+      description: "Description"
+      home_url: "Home page URL"
+      login_url: "Login form URL"
+      name: "Site Name"
+      save_site: "Save site"
+    index: 
+      all_sites: "All Sites"
+      confirm_delete: "Are you sure you want to delete this site and all logins? This operation can not be undone."
+      delete: Delete
+      description: "Description"
+      edit: Edit
+      home: "Home"
+      login: "Login"
+      name: "Name"
+      new_site: "New Site"
+      no_sites_configured: "No sites configured."
+      no_sites_found: "No sites found."
+      options: Options
+    new: 
+      new_site: "New Site"
+    show: 
+      description: "Description"
+      edit_site: "Edit Site"
+      go: "Go"
+      home: "Home"
+      login: "Login"
+      site: "Site %{site}"
+    tabs: 
+      edit: Edit
+      information: Information
+      logins: "Logins"
+  start: 
+    index: 
+      add_existing_user_to_account: "Add existing user to account %{account}"
+      add_new_user_to_account: "Add new user to account %{account}"
+      add_site: "Add site"
+      bookmarklet: "Drag this bookmarklet into your Bookmarks bar to get one-click access to your logins:"
+      create_account: "Create account"
+      get_started: "Get Started"
+      manage_users: "Manage users for account %{account}"
+      no_accounts: "There are no accounts for this user yet."
+      quick_links: "Quick links"
+      settings: "Edit settings"
+  user_accounts: 
+    new: 
+      add: "Add user"
+      email: "E-mail address"
+      error_creating_user_account: "Could not add a user to this account"
+  user_sessions: 
+    new: 
+      could_not_login: "Login failed"
+      email: E-Mail
+      forgot_password: "Forgot password?"
+      login: Login
+      password: Password
+      register_instead: "Not registered yet?"
+      remember_me: "Remember me"
+  users: 
+    edit: 
+      could_not_update_user: "Could not update user"
+      edit_users_profile: "Edit user's profile"
+      email_address: "E-mail address"
+      full_name: "Full name"
+      the_email_address_is_used_for_notifications: "The e-mail address is used for notifications"
+      update: Update
+    new: 
+      could_not_register_user: "Could not register user"
+      create_account: "Create account"
+      create_new_account: "Create new account"
+      email_address: "E-mail address"
+      full_name: "Full name"
+      login_instead: "Already registered?"
+      password: Password
+      password_confirmation: "Password confirmation"
+      please_repeat_the_password_exactly_as_above: "Please repeat the password exactly as above"
+      the_email_address_is_used_for_notifications: "The e-mail address is used for notifications"
+    show: 
+      accounts: Accounts
+      edit_profile: "Edit profile"
+      email: "Email address"
+      full_name: "Full name"
+      no_accounts: "none yet"
+      settings: "Edit settings"
+      users_profile: "%{full_name}'s profile"

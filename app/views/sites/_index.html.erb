@@ -1,0 +1,33 @@
+<% if @sites.empty? %>
+  <p><%= t('.no_sites_found') %></p>
+<% else %>
+  <table class="list">
+    <thead>
+      <tr>
+        <th><%= t('.name') %></th>
+        <th><%= t('.description') %></th>
+        <% if current_user.can_edit_sites?(@account) %>
+          <th><%= t('.options') %></th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @sites.each do |site| %>
+        <tr>
+          <td><%= link_to highlight(site.name, @search_filter.query), account_site_logins_path(site.account, site) %></td>
+          <td><%= site.description %></td>
+          <td>
+            <%= action_list do |a| %>
+              <% a.link_to t('.home'), site.home_url %>
+              <% a.link_to t('.login'), site.login_url %>
+              <% if current_user.can_edit_sites?(@account) %>
+                <% a.link_to t('.edit'), edit_account_site_path(site.account, site) %>
+                <% a.link_to t('.delete'), account_site_path(site.account, site), :method => :delete, :confirm => t('.confirm_delete') if current_user.can_delete_sites?(@account) %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

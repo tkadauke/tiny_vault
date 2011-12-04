@@ -1,0 +1,12 @@
+<dl>
+  <dt><%= t(".name") %></dt>
+  <dd><%= @account.name %></dd>
+  
+  <dt><%= t('.statistics') %></dt>
+  <dd>
+    <ul>
+      <li><%= t('.sites_count', :count => @account.sites.count) %></li>
+      <li><%= t('.login_count', :count => @account.logins.count) %></li>
+    </ul>
+  </dd>
+</dl>

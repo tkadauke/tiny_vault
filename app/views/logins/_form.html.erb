@@ -1,0 +1,20 @@
+<%= form_for [@account, @site, @login], :html => { :class => 'form' } do |f| %>
+  <%= f.error_messages :header_message => t('.could_not_create_login') %>
+  
+  <p class="form_item">
+    <span class="label"><%= f.label :description, t('.description') %></span>
+    <%= f.text_field :description %>
+  </p>
+
+  <p class="form_item">
+    <span class="label"><%= f.label :username, t('.username') %></span>
+    <%= f.text_field :username %>
+  </p>
+
+  <p class="form_item">
+    <span class="label"><%= f.label :password, t('.password') %></span>
+    <%= f.password_field :password %>
+  </p>
+
+  <p><%= f.submit t('.save_login') %></p>
+<% end %>
