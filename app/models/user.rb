@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_many :accounts, :through => :user_accounts
   has_many :config_options
   
+  has_many :logins
+  
   belongs_to :current_account, :class_name => 'Account'
   
   validates_presence_of :full_name

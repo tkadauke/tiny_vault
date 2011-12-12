@@ -1,5 +1,6 @@
 class Login < ActiveRecord::Base
   belongs_to :site
+  belongs_to :user
   
   validates_presence_of :site_id, :username, :password
   

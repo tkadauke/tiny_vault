@@ -36,6 +36,7 @@ class LoginsController < ApplicationController
   def create
     can_create_logins!(@account) do
       @login = @site.logins.build(params[:login])
+      @login.user = current_user
       if @login.save
         flash[:notice] = I18n.t('flash.notice.created_login', :login => @login.description)
         redirect_to account_site_logins_path(@account, @site)
