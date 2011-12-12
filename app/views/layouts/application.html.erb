@@ -98,7 +98,7 @@
             <a href="/sites"><%= t('layouts.sites') %></a>
           </div>
           <div class="right">
-            <%= t('layouts.version', :version => TinyVault::Version.version, :revision => revision_link) %>
+            <%= t('layouts.version', :version => TinyVault::Version.version, :revision => revision_link).html_safe %>
           </div>
         </div>
         <div class="content">
