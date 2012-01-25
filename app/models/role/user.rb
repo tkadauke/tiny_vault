@@ -34,9 +34,5 @@ module Role::User
     user != self && can_add_user_to_account?(account)
   end
   
-  def can_edit_key_template?(template)
-    self == template.user || user_account_for(template.account).can_edit_key_template?
-  end
-  
   allow :edit_settings, :see_account_details
 end
