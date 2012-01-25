@@ -20,7 +20,7 @@ class Key < ActiveRecord::Base
     
     values.reject! { |name, v| selections["bulk_update_#{name}"] != '1' }
     
-    update_attributes(values)
+    update_attributes(values) unless values.empty?
   end
 
 protected

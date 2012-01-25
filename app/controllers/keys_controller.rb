@@ -35,7 +35,7 @@ class KeysController < ApplicationController
 
   def create
     can_create_keys!(@account) do
-      @key = @site.keys.build(params[:_key])
+      @key = @site.keys.build(params[:key])
       @key.user = current_user
       if @key.save
         flash[:notice] = I18n.t('flash.notice.created_key', :key => @key.description)
@@ -57,17 +57,17 @@ class KeysController < ApplicationController
   end
 
   def edit_multiple
-    redirect_to :back and return if params[:_key_ids].blank?
+    redirect_to :back and return if params[:key_ids].blank?
 
     can_edit_keys!(@account) do
-      @keys = @account.keys.find(params[:_key_ids], :include => :site, :order => 'sites.name ASC, keys.username ASC')
+      @keys = @account.keys.find(params[:key_ids], :include => :site, :order => 'sites.name ASC, keys.username ASC')
     end
   end
 
   def update
     can_edit_keys!(@account) do
       @key = @site.keys.find(params[:id])
-      if @key.update_attributes(params[:_key])
+      if @key.update_attributes(params[:key])
         flash[:notice] = I18n.t('flash.notice.updated_key', :key => @key.name)
         redirect_to account_site_key_path(@account, @site, @key)
       else
@@ -78,13 +78,13 @@ class KeysController < ApplicationController
 
   def update_multiple
     can_edit_keys!(@account) do
-      @keys = @account.keys.find(params[:_key_ids])
-      updated = @keys.map do |_key|
-        _key.bulk_update(params[:_key])
+      @keys = @account.keys.find(params[:key_ids])
+      updated = @keys.map do |key|
+        key.bulk_update(params[:key])
       end
 
       flash[:notice] = I18n.t("flash.notice.bulk_updated_keys", :count => updated.count(true))
-      redirect_to keys_path
+      redirect_to account_site_keys_path(@account, @site)
     end
   end
 
