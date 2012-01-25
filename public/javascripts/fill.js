@@ -1,5 +1,5 @@
-if (typeof window.TinyVaultLoginIndex == 'undefined') {
-  window.TinyVaultLoginIndex = 0;
+if (typeof window.TinyVaultKeyIndex == 'undefined') {
+  window.TinyVaultKeyIndex = 0;
 }
 
 (function () {
@@ -60,7 +60,7 @@ if (typeof window.TinyVaultLoginIndex == 'undefined') {
     if (username.length > 0 && password.length > 0) {
       var domain = document.location.host;
       jq.ajax({
-        url: 'http://' + getHostname(scriptURL) + '/logins/fill',
+        url: 'http://' + getHostname(scriptURL) + '/keys/fill',
         data: {
           "domain" : domain,
         },
@@ -70,10 +70,10 @@ if (typeof window.TinyVaultLoginIndex == 'undefined') {
             if (data.error) {
               alert(data.error);
             } else {
-              var index = window.TinyVaultLoginIndex % data.length;
-              username.val(data[index].login.username);
-              password.val(data[index].login.password);
-              window.TinyVaultLoginIndex ++;
+              var index = window.TinyVaultKeyIndex % data.length;
+              username.val(data[index].key.username);
+              password.val(data[index].key.password);
+              window.TinyVaultKeyIndex ++;
             }
           } else {
             alert('Unerwarteter Fehler');

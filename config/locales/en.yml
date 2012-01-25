@@ -22,7 +22,7 @@ en:
     info: 
       login_count:
         one: "1 login"
-        other: "%{count} logins"
+        other: "%{count} keys"
       name: "Name"
       sites_count:
         one: "1 site"
@@ -115,8 +115,8 @@ en:
     edit_multiple: "Bulk edit"
     footer_links: "Footer links"
     home: Home
-    login: Login
-    logins: Logins
+    key: Key
+    keys: Keys
     new: New
     password_resets: "Reset password"
     settings: Settings
@@ -147,16 +147,16 @@ en:
       user_could_not_be_located: "We're sorry, but we could not locate your account. If you are having issues try copying and pasting the URL from your email into your browser or restarting the reset password process."
     notice: 
       assign_roles: "Successfully assigned account role to user"
-      bulk_updated_logins: 
-        one: "Successfully updated 1 login"
-        other: "Successfully updated %{count} logins"
+      bulk_updated_keys: 
+        one: "Successfully updated 1 key"
+        other: "Successfully updated %{count} keys"
       created_account: "Successfully created account %{account}"
       created_footer_link: "Successfully created footer link"
-      created_login: "Successfully created login %{login}"
+      created_key: "Successfully created key %{key}"
       created_site: "Successfully created site %{site}"
       created_user: "Successfully created user"
       created_user_account: "Successfully added this user to the account"
-      deleted_login: "Successfully deleted login %{login}"
+      deleted_key: "Successfully deleted key %{key}"
       deleted_site: "Successfully deleted site %{site}"
       logged_in: "Successfully logged in"
       logged_out: "Successfully logged out"
@@ -167,7 +167,7 @@ en:
       switched_account: "Successfully switched to account %{account}"
       updated_account: "Successfully updated account %{account}"
       updated_footer_link: "Successfully updated footer link"
-      updated_login: "Successfully updated login %{login}"
+      updated_key: "Successfully updated key %{key}"
       updated_settings: "Successfully updated settings"
       updated_site: "Successfully updated site %{site}"
       updated_user: "Successfully updated user"
@@ -189,9 +189,9 @@ en:
     user_greeter: "Welcome, %{user}"
     version: "Version %{version}, revision %{revision}"
     you_are_here: "You are here"
-  logins: 
+  keys: 
     edit: 
-      edit_login_for_site: "Edit login for site %{site}"
+      edit_key_for_site: "Edit key for site %{site}"
     fill: 
       error: 
         not_logged_in: "You are not logged into TinyVault"
@@ -199,22 +199,22 @@ en:
     edit_multiple: 
       check_fields_you_want_to_change: "Check the fields you want to change."
       description: Description
-      edit_multiple_logins: 
-        one: "Edit 1 login"
-        other: "Edit %{count} logins"
+      edit_multiple_keys: 
+        one: "Edit 1 key"
+        other: "Edit %{count} keys"
       password: "Password"
       show_all: "Show all"
-      update_logins: "Update logins"
+      update_keys: "Update keys"
       username: "Username"
     form: 
-      could_not_create_login: "Could not create login"
+      could_not_create_key: "Could not create key"
       description: Description
       password: "Password"
-      save_login: "Save login"
+      save_key: "Save key"
       username: "Username"
     index: 
-      logins_for_site: "Logins for Site %{site}"
-      new_login: "New login"
+      keys_for_site: "Keys for Site %{site}"
+      new_key: "New key"
     list: 
       all: "Select all"
       delete: Delete
@@ -224,11 +224,11 @@ en:
       invert: "Invert selection"
       none: "Select none"
       options: Options
-      really_delete_login: "Do you really want to delete this login? This operation can not be undone."
+      really_delete_key: "Do you really want to delete this key? This operation can not be undone."
       site: Site
       username: "Username"
     new: 
-      new_login_for_site: "New Login for Site %{site}"
+      new_key_for_site: "New Key for Site %{site}"
     tabs: 
       edit: "Edit"
       information: "Information"
@@ -267,7 +267,7 @@ en:
       save_site: "Save site"
     index: 
       all_sites: "All Sites"
-      confirm_delete: "Are you sure you want to delete this site and all logins? This operation can not be undone."
+      confirm_delete: "Are you sure you want to delete this site and all keys? This operation can not be undone."
       delete: Delete
       description: "Description"
       edit: Edit
@@ -290,13 +290,13 @@ en:
     tabs: 
       edit: Edit
       information: Information
-      logins: "Logins"
+      keys: "Keys"
   start: 
     index: 
       add_existing_user_to_account: "Add existing user to account %{account}"
       add_new_user_to_account: "Add new user to account %{account}"
       add_site: "Add site"
-      bookmarklet: "Drag this bookmarklet into your Bookmarks bar to get one-click access to your logins:"
+      bookmarklet: "Drag this bookmarklet into your Bookmarks bar to get one-click access to your keys:"
       create_account: "Create account"
       get_started: "Get Started"
       manage_users: "Manage users for account %{account}"

@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20111212212527) do
     t.datetime "updated_at"
   end
 
-  create_table "logins", :force => true do |t|
+  create_table "keys", :force => true do |t|
     t.integer  "site_id"
     t.string   "description"
     t.string   "username"

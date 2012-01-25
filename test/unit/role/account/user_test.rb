@@ -9,16 +9,16 @@ class Role::Account::UserTest < ActiveSupport::TestCase
     @user = TestUserAccount.new
   end
   
-  test "should be able to create logins" do
-    assert @user.can_create_logins?
+  test "should be able to create keys" do
+    assert @user.can_create_keys?
   end
   
-  test "should be able to edit logins" do
-    assert @user.can_edit_logins?
+  test "should be able to edit keys" do
+    assert @user.can_edit_keys?
   end
   
-  test "should be able to delete logins" do
-    assert @user.can_delete_logins?
+  test "should be able to delete keys" do
+    assert @user.can_delete_keys?
   end
   
   test "should be able to create sites" do

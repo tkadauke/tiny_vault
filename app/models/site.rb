@@ -1,6 +1,6 @@
 class Site < ActiveRecord::Base
   belongs_to :account
-  has_many :logins
+  has_many :keys
   
   before_save :set_login_domain
 

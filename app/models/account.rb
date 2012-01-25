@@ -5,7 +5,7 @@ class Account < ActiveRecord::Base
   has_many :users, :through => :user_accounts
   
   has_many :sites
-  has_many :logins, :through => :sites
+  has_many :keys, :through => :sites
   
   scope :ordered_by_name, :order => 'name ASC'
   

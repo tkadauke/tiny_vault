@@ -22,7 +22,7 @@ class SitesController < ApplicationController
       @site = @account.sites.build(params[:site])
       if @site.save
         flash[:notice] = I18n.t('flash.notice.created_site', :site => @site.name)
-        redirect_to account_site_logins_path(@account, @site)
+        redirect_to account_site_keys_path(@account, @site)
       else
         render :action => 'new'
       end

@@ -1,5 +1,5 @@
 <%= tabs(:selected => selected) do |a| %>
   <% a.tab :information, t(".information"), account_site_path(@account, @site) %>
-  <% a.tab :logins, t(".logins"), account_site_logins_path(@account, @site) %>
+  <% a.tab :keys, t(".keys"), account_site_keys_path(@account, @site) %>
   <% a.tab :edit, t(".edit"), edit_account_site_path(@account, @site) %>
 <% end %>

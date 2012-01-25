@@ -1,0 +1,6 @@
+<%= tabs(:selected => selected) do |a| %>
+  <% a.tab :information, t(".information"), account_site_key_path(@account, @site, @key) %>
+  <% if current_user.can_edit_keys?(@account) %>
+    <% a.tab :edit, t('.edit'), edit_account_site_key_path(@account, @site, @key) %>
+  <% end %>
+<% end %>

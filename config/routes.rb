@@ -16,7 +16,7 @@ TinyVault::Application.routes.draw do
       post :switch
     end
     resources :sites do
-      resources :logins do
+      resources :keys do
         collection do
           post :edit_multiple
           put :update_multiple
@@ -27,7 +27,7 @@ TinyVault::Application.routes.draw do
     resources :user_accounts
   end
   
-  match 'logins/fill', :via => :get
+  match 'keys/fill', :via => :get
   
   resources :sites
   

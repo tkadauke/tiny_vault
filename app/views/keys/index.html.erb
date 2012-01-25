@@ -1,0 +1,17 @@
+<h2><%= t('.keys_for_site', :site => @site.name) %></h2>
+
+<%= render :partial => "/sites/tabs", :locals => { :selected => :keys } %>
+
+<%= render :partial => "/shared/filter", :locals => { :url => account_site_keys_path(@account, @site, :report => params[:report]) } %>
+
+<div id="checks">
+  <%= render :partial => "list" %>
+</div>
+
+<% if current_user.can_create_keys?(@account) %>
+  <p>
+    <%= action_list do |a| %>
+      <% a.link_to t('.new_key'), new_account_site_key_path(@account, @site) %>
+    <% end %>
+  </p>
+<% end %>

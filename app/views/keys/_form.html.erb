@@ -1,5 +1,5 @@
-<%= form_for [@account, @site, @login], :html => { :class => 'form' } do |f| %>
-  <%= f.error_messages :header_message => t('.could_not_create_login') %>
+<%= form_for [@account, @site, @key], :html => { :class => 'form' } do |f| %>
+  <%= f.error_messages :header_message => t('.could_not_create_key') %>
   
   <p class="form_item">
     <span class="label"><%= f.label :description, t('.description') %></span>
@@ -16,5 +16,5 @@
     <%= f.password_field :password %>
   </p>
 
-  <p><%= f.submit t('.save_login') %></p>
+  <p><%= f.submit t('.save_key') %></p>
 <% end %>

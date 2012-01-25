@@ -14,7 +14,7 @@
     <tbody>
       <% @sites.each do |site| %>
         <tr>
-          <td><%= link_to highlight(site.name, @search_filter.query), account_site_logins_path(site.account, site) %></td>
+          <td><%= link_to highlight(site.name, @search_filter.query), account_site_keys_path(site.account, site) %></td>
           <td><%= site.description %></td>
           <td>
             <%= action_list do |a| %>

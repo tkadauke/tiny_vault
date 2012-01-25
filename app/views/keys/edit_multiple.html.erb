@@ -1,23 +1,23 @@
-<h2><%= t('.edit_multiple_logins', :count => @logins.size) %></h2>
+<h2><%= t('.edit_multiple_keys', :count => @keys.size) %></h2>
 
-<%= form_for :login, :url => update_multiple_logins_path, :html => { :method => :put, :class => 'form' } do |f| %>
-  <ul class="asterisk" id="login_list">
-    <% @logins.each_with_index do |login, i| %>
+<%= form_for :key, :url => update_multiple_keys_path, :html => { :method => :put, :class => 'form' } do |f| %>
+  <ul class="asterisk" id="key_list">
+    <% @keys.each_with_index do |key, i| %>
       <li<%= ' style="display: none"' if i >= 10 %>>
-        <%= login.site.name %> / <%= login.username %>
-        <%= hidden_field_tag "login_ids[]", login.id %>
+        <%= key.site.name %> / <%= key.username %>
+        <%= hidden_field_tag "key_ids[]", key.id %>
       </li>
     <% end %>
   </ul>
   
-  <p><%= link_to_function t(".show_all", :count => @logins.size), %{$$('#login_list li').each(function(element) { element.show() }); this.hide()} if @logins.size > 10 %></p>
+  <p><%= link_to_function t(".show_all", :count => @keys.size), %{$$('#key_list li').each(function(element) { element.show() }); this.hide()} if @keys.size > 10 %></p>
   
   <p><%= t('.check_fields_you_want_to_change') %></p>
   
   <table class="edit-multiple">
     <tbody>
       <tr>
-        <td><%= f.check_box :bulk_update_username, :onclick => "$('login_username').disabled = !this.checked" %></td>
+        <td><%= f.check_box :bulk_update_username, :onclick => "$('key_username').disabled = !this.checked" %></td>
         <td>
           <p class="form_item">
             <span class="label"><%= f.label :bulk_update_username, t('.username') %></span>
@@ -26,7 +26,7 @@
         </td>
       </tr>
       <tr>
-        <td><%= f.check_box :bulk_update_password, :onclick => "$('login_password').disabled = !this.checked" %></td>
+        <td><%= f.check_box :bulk_update_password, :onclick => "$('key_password').disabled = !this.checked" %></td>
         <td>
           <p class="form_item">
             <span class="label"><%= f.label :bulk_update_password, t('.password') %></span>
@@ -35,7 +35,7 @@
         </td>
       </tr>
       <tr>
-        <td><%= f.check_box :bulk_update_description, :onclick => "$('login_description').disabled = !this.checked" %></td>
+        <td><%= f.check_box :bulk_update_description, :onclick => "$('key_description').disabled = !this.checked" %></td>
         <td>
           <p class="form_item">
             <span class="label"><%= f.label :bulk_update_description, t('.description') %></span>
@@ -46,5 +46,5 @@
     </tbody>
   </table>
   
-  <p><%= f.submit t('.update_logins') %></p>
+  <p><%= f.submit t('.update_keys') %></p>
 <% end %>
