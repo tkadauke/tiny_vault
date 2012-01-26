@@ -15,6 +15,29 @@ class Admin::AccountsControllerTest < ActionController::TestCase
     assert_response :success
   end
   
+  test "should get index with search filter" do
+    get :index, :search_filter => { :query => 'acc' }
+    assert_response :success
+    assert_equal [@account], assigns(:accounts)
+  end
+  
+  test "should get index with search filter that matches nothing" do
+    get :index, :search_filter => { :query => 'foo' }
+    assert_response :success
+    assert_equal [], assigns(:accounts)
+  end
+  
+  test "should update index" do
+    xhr :get, :index
+    assert_response :success
+  end
+  
+  test "should update index with search filter" do
+    xhr :get, :index, :search_filter => { :query => 'acc' }
+    assert_equal [@account], assigns(:accounts)
+    assert_response :success
+  end
+  
   test "should show account" do
     get :show, :id => @account
     assert_response :success
@@ -29,5 +52,10 @@ class Admin::AccountsControllerTest < ActionController::TestCase
     post :update, :id => @account, :account => { :name => 'test' }
     assert_response :redirect
     assert_equal 'test', @account.reload.name
+  end
+  
+  test "should not update invalid account" do
+    post :update, :id => @account, :account => { :name => nil }
+    assert_response :success
   end
 end

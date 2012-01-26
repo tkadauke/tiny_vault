@@ -12,6 +12,12 @@ class Role::AdminTest < ActiveSupport::TestCase
     @user = TestAdmin.new
   end
   
+  test "should forward unrecognized calls to parent class" do
+    assert_raise NoMethodError do
+      @user.foobar
+    end
+  end
+  
   test "should be able to do anything else" do
     assert @user.can_do_whatever_he_wants?
   end

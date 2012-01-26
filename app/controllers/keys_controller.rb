@@ -68,7 +68,7 @@ class KeysController < ApplicationController
     can_edit_keys!(@account) do
       @key = @site.keys.find(params[:id])
       if @key.update_attributes(params[:key])
-        flash[:notice] = I18n.t('flash.notice.updated_key', :key => @key.name)
+        flash[:notice] = I18n.t('flash.notice.updated_key', :key => @key.description || @key.username)
         redirect_to account_site_key_path(@account, @site, @key)
       else
         render :action => 'edit'
@@ -92,7 +92,7 @@ class KeysController < ApplicationController
     can_delete_keys!(@account) do
       @key = @site.keys.find(params[:id])
       @key.destroy
-      flash[:notice] = I18n.t('flash.notice.deleted_key', :key => @key.name)
+      flash[:notice] = I18n.t('flash.notice.deleted_key', :key => @key.description || @key.username)
       redirect_to account_site_keys_path(@account, @site)
     end
   end

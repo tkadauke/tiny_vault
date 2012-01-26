@@ -8,9 +8,43 @@ class SitesControllerTest < ActionController::TestCase
     login_with @user
   end
   
+  test "should get empty index" do
+    get :index, :account_id => @account
+    assert_response :success
+    assert_equal [], assigns(:sites)
+  end
+  
   test "should show all sites" do
     site = @account.sites.create(:name => 'example.com', :home_url => 'http://www.example.com', :login_url => 'http://www.example.com/login')
     get :index, :account_id => @account
+    assert_response :success
+    assert_equal [site], assigns(:sites)
+  end
+  
+  test "should get index with search filter" do
+    site = @account.sites.create(:name => 'example.com', :home_url => 'http://www.example.com', :login_url => 'http://www.example.com/login')
+    get :index, :account_id => @account, :search_filter => { :query => 'example' }
+    assert_response :success
+    assert_equal [site], assigns(:sites)
+  end
+  
+  test "should get index with search filter that matches nothing" do
+    site = @account.sites.create(:name => 'example.com', :home_url => 'http://www.example.com', :login_url => 'http://www.example.com/login')
+    get :index, :account_id => @account, :search_filter => { :query => 'foobar' }
+    assert_response :success
+    assert_equal [], assigns(:sites)
+  end
+  
+  test "should update index" do
+    site = @account.sites.create(:name => 'example.com', :home_url => 'http://www.example.com', :login_url => 'http://www.example.com/login')
+    xhr :get, :index, :account_id => @account
+    assert_response :success
+    assert_equal [site], assigns(:sites)
+  end
+  
+  test "should update index with search filter" do
+    site = @account.sites.create(:name => 'example.com', :home_url => 'http://www.example.com', :login_url => 'http://www.example.com/login')
+    xhr :get, :index, :account_id => @account, :search_filter => { :query => 'example' }
     assert_response :success
     assert_equal [site], assigns(:sites)
   end

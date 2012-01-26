@@ -14,4 +14,27 @@ class Admin::UsersControllerTest < ActionController::TestCase
     get :index
     assert_response :success
   end
+  
+  test "should get index with search filter" do
+    get :index, :search_filter => { :query => 'john' }
+    assert_response :success
+    assert_equal [@user], assigns(:users)
+  end
+  
+  test "should get index with search filter that matches nothing" do
+    get :index, :search_filter => { :query => 'foo' }
+    assert_response :success
+    assert_equal [], assigns(:users)
+  end
+  
+  test "should update index" do
+    xhr :get, :index
+    assert_response :success
+  end
+  
+  test "should update index with search filter" do
+    xhr :get, :index, :search_filter => { :query => 'john' }
+    assert_response :success
+    assert_equal [@user], assigns(:users)
+  end
 end

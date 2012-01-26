@@ -1,8 +1,8 @@
 require File.expand_path(File.dirname(__FILE__) + '/../test_helper')
 
 class FooterLinkTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  test "should validate" do
+    assert ! FooterLink.new.valid?
+    assert   FooterLink.new(:text => 'Hello', :url => 'http://www.wikipedia.org').valid?
   end
 end
