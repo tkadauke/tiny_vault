@@ -235,6 +235,7 @@ en:
       username: Username
     fill: 
       error: 
+        no_keys_found: "You can not access any key on this site with your current TinyVault account '%{account}'"
         not_logged_in: "You are not logged into TinyVault"
         site_not_found: "The current site was not found in TinyVault account '%{account}'"
     form: 
