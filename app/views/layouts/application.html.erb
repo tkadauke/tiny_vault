@@ -59,6 +59,8 @@
           <ul>
             <li<%= ' class="selected"'.html_safe if @tab == :start %>><a href="/"><%= t('layouts.home') %></a></li>
             <li<%= ' class="selected"'.html_safe if @tab == :sites %>><a href="/sites"><%= t('layouts.sites') %></a></li>
+            <li<%= ' class="selected"'.html_safe if @tab == :keys %>><a href="/keys"><%= t('layouts.keys') %></a></li>
+            <li<%= ' class="selected"'.html_safe if @tab == :groups %>><a href="/groups"><%= t('layouts.groups') %></a></li>
           </ul>
         </div>
       </div>

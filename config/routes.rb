@@ -17,19 +17,26 @@ TinyVault::Application.routes.draw do
     end
     resources :sites do
       resources :keys do
-        collection do
-          post :edit_multiple
-          put :update_multiple
-        end
+        resources :group_keys
       end
     end
     
+    resources :groups do
+      resources :memberships
+    end
     resources :user_accounts
   end
   
   match 'keys/fill', :via => :get
   
   resources :sites
+  resources :keys do
+    collection do
+      post :edit_multiple
+      put :update_multiple
+    end
+  end
+  resources :groups
   
   resources :users
   resources :password_resets

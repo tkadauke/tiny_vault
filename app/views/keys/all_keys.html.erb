@@ -1,0 +1,11 @@
+<h2><%= t('.all_keys') %></h2>
+
+<%= render :partial => "/shared/filter", :locals => { :url => keys_path(@account) } %>
+
+<h3><%= t('.my_keys') %></h3>
+
+<%= render :partial => "list", :locals => { :keys => @my_keys } %>
+
+<h3><%= t('.other_keys') %></h3>
+
+<%= render :partial => "list", :locals => { :keys => @account_keys } %>

@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   
   has_many :keys
   
+  has_many :memberships
+  has_many :groups, :through => :memberships
+  
   belongs_to :current_account, :class_name => 'Account'
   
   validates_presence_of :full_name
@@ -75,7 +78,12 @@ class User < ActiveRecord::Base
     # This can probably be done more efficiently
     !(self.accounts & user.accounts).empty?
   end
-
+  
+  def keys_from_account(account)
+    group_ids = memberships.map(&:group_id)
+    account.keys.where('group_keys.group_id' => group_ids).joins(:group_keys)
+  end
+  
 protected
   def self.with_search_scope(filter, &block)
     conditions = filter.empty? ? nil : ['users.full_name LIKE ? OR users.email LIKE ?', "%#{filter.query}%", "%#{filter.query}%"]

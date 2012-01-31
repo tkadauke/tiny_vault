@@ -2,11 +2,17 @@ class KeysController < ApplicationController
   before_filter :login_required, :except => :fill
   before_filter :find_account, :except => :fill
   before_filter :find_site
-  active_tab :sites
+  active_tab :keys
 
   def index
     @search_filter = SearchFilter.new(params[:search_filter])
-    @keys = @site.keys.find_for_list(@search_filter, @status, :order => 'keys.username ASC')
+    if @site
+      @keys = @site.keys.find_for_list(@search_filter, :order => 'keys.username ASC')
+    else
+      @my_keys = current_user.keys.find_for_list(@search_filter, :order => 'keys.username ASC')
+      @account_keys = current_user.keys_from_account(@account).find_for_list(@search_filter, :order => 'keys.username ASC')
+      render :action => 'all_keys'
+    end
   end
 
   def fill
@@ -16,7 +22,7 @@ class KeysController < ApplicationController
           @account = current_user.current_account
           @site = @account.sites.find_by_login_domain(params[:domain])
           if @site
-            render :text => "%s(%s);" % [params[:callback], @site.keys.to_json]
+            render :text => "%s(%s);" % [params[:callback], @site.keys_for_user(current_user).to_json]
           else
             render_json_error I18n.t('keys.fill.error.site_not_found', :account => @account.name)
           end

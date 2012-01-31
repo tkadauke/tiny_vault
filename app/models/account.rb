@@ -6,6 +6,7 @@ class Account < ActiveRecord::Base
   
   has_many :sites
   has_many :keys, :through => :sites
+  has_many :groups
   
   scope :ordered_by_name, :order => 'name ASC'
   

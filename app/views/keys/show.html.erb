@@ -3,3 +3,47 @@
   <dt>Username</dt> <dd><%= @key.username %></dd>
   <dt>Password</dt> <dd><%= @key.password %></dd>
 </dl>
+
+<% if @key.groups.blank? %>
+  <p><%= t('.no_group_keys_found') %></p>
+<% else %>
+  <table>
+    <thead>
+      <tr>
+        <th><%= t('.name') %></th>
+        <th><%= t('.options') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @key.group_keys.each do |group_key| %>
+        <tr>
+          <td>
+            <%= link_to group_key.group.name, account_group_path(@account, group_key.group) %>
+          </td>
+          <td>
+            <%= action_list do |a| %>
+              <% a.link_to t('.delete'), account_site_key_group_key_path(@account, @site, @key, group_key), :method => :delete, :confirm => t('.confirm_delete') %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<% if current_user.can_add_group_to_key?(@group, @key) %>
+  <h3><%= t('.add_group') %></h3>
+
+  <%= form_for [@account, @site, @key, GroupKey.new], :html => { :class => 'form' } do |f| %>
+    <p class="form_item">
+      <span class="label"><%= f.label :group_id, t('.group'), :class => 'required' %></span>
+      <%= f.select :group_id, @account.groups.collect { |group| [group.name, group.id] } %>
+    </p>
+
+    <p><%= f.submit t('.add') %></p>
+  <% end %>
+<% end %>
+
+<% if current_user.can_edit_key?(@key) %>
+  <p><%= link_to t(".edit_key"), edit_account_site_key_path(@account, @site, @key) %></p>
+<% end %>

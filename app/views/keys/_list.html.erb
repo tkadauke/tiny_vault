@@ -1,4 +1,4 @@
-<%= form_tag edit_multiple_account_site_keys_path(@account, @site) do %>
+<%= form_tag edit_multiple_keys_path(@account, @site) do %>
   <table class="list">
     <thead>
       <tr>
@@ -30,7 +30,7 @@
       </tfoot>
     <% end %>
     <tbody>
-      <% @keys.each do |key| %>
+      <% keys.each do |key| %>
         <tr>
           <% if current_user.can_edit_keys?(@account) %>
             <td><%= check_box_tag "key_ids[]", key.id %></td>
@@ -41,7 +41,7 @@
           <% if current_user.can_edit_keys?(@account) %>
             <td>
               <%= action_list do |a| %>
-                <% a.link_to t('.edit'), edit_account_site_key_path(key.site.account, key.site, key) if current_user.can_edit_keys?(@account) %>
+                <% a.link_to t('.edit'), edit_account_site_key_path(key.site.account, key.site, key) if current_user.can_edit_key?(key) %>
                 <% a.link_to t('.delete'), account_site_key_path(key.site.account, key.site, key), :method => :delete, :confirm => t('.really_delete_key') if current_user.can_delete_keys?(@account) %>
               <% end %>
             </td>

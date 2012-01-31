@@ -21,6 +21,11 @@ class Site < ActiveRecord::Base
       find(:all, :include => :account, :order => 'sites.name ASC')
     end
   end
+  
+  def keys_for_user(user)
+    group_ids = user.memberships.map(&:group_id)
+    keys.where(['user_id = ? OR group_keys.group_id in (?)', user.id, group_ids]).includes(:group_keys)
+  end
 
 protected
   def self.with_search_scope(filter, &block)

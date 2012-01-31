@@ -1,0 +1,43 @@
+<h2><%= t('.group', :group => @group.name) %></h2>
+
+<p><%= t('.members') %></p>
+
+<table class="list">
+  <thead>
+    <tr>
+      <th><%= t('.name') %></th>
+      <% if current_user.can_edit_groups?(@account) %>
+        <th><%= t('.options') %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @group.memberships.each do |membership| %>
+      <tr>
+        <td><%= link_to membership.user.name, user_path(membership.user) %></td>
+        <td>
+          <%= action_list do |a| %>
+            <% if current_user.can_edit_groups?(@account) %>
+              <% a.link_to t('.delete'), account_group_membership_path(@account, @group, membership), :method => :delete, :confirm => t('.confirm_delete') if current_user.can_remove_user_from_group?(membership.user, @group) %>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if current_user.can_add_user_to_group?(@group) %>
+  <%= form_for [@account, @group, Membership.new], :html => { :class => 'form' } do |f| %>
+    <p class="form_item">
+      <span class="label"><%= f.label :email, t('.email'), :class => 'required' %></span>
+      <%= f.text_field :email %>
+    </p>
+
+    <p><%= f.submit t('.add') %></p>
+  <% end %>
+<% end %>
+
+<% if current_user.can_edit_groups?(@account) %>
+  <p><%= link_to t(".edit_group"), edit_account_group_path(@account, @group) %></p>
+<% end %>

@@ -1,0 +1,41 @@
+<h2><%= t('.all_groups') %></h2>
+
+<% if @groups.empty? %>
+  <p><%= t('.no_groups_configured') %></p>
+<% else %>
+  <% if @groups.empty? %>
+    <p><%= t('.no_groups_found') %></p>
+  <% else %>
+    <table class="list">
+      <thead>
+        <tr>
+          <th><%= t('.name') %></th>
+          <th><%= t('.members') %></th>
+          <% if current_user.can_edit_groups?(@account) %>
+            <th><%= t('.options') %></th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @groups.each do |group| %>
+          <tr>
+            <td><%= link_to group.name, account_group_path(group.account, group) %></td>
+            <td><%= group.members.count %></td>
+            <td>
+              <%= action_list do |a| %>
+                <% if current_user.can_edit_groups?(@account) %>
+                  <% a.link_to t('.edit'), edit_account_group_path(group.account, group) %>
+                  <% a.link_to t('.delete'), account_group_path(group.account, group), :method => :delete, :confirm => t('.confirm_delete') if current_user.can_delete_groups?(@account) %>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+<% end %>
+
+<% if current_user.can_create_groups?(@account) %>
+  <p><%= link_to t('.new_group'), new_account_group_path(@account) %></p>
+<% end %>

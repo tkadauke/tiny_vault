@@ -1,0 +1,10 @@
+<%= form_for [@account, @group], :html => { :class => 'form' } do |f| %>
+  <%= f.error_messages :header_message => t('.could_not_create_group') %>
+  
+  <p class="form_item">
+    <span class="label"><%= f.label :name, t('.name'), :class => 'required' %></span>
+    <%= f.text_field :name %>
+  </p>
+
+  <p><%= f.submit t('.save_group') %></p>
+<% end %>

@@ -20,14 +20,14 @@ en:
       new_account: "New Account"
       options: Options
     info: 
-      login_count:
+      login_count: 
         one: "1 login"
         other: "%{count} keys"
-      name: "Name"
-      sites_count:
+      name: Name
+      sites_count: 
         one: "1 site"
         other: "%{count} sites"
-      statistics: "Statistics"
+      statistics: Statistics
     new: 
       new_account: "New Account"
     show: 
@@ -47,6 +47,10 @@ en:
   activerecord: 
     errors: 
       models: 
+        membership: 
+          attributes: 
+            email: 
+              not_found: "does not belong to an existing user"
         user_account: 
           attributes: 
             email: 
@@ -114,6 +118,7 @@ en:
     edit: Edit
     edit_multiple: "Bulk edit"
     footer_links: "Footer links"
+    groups: Groups
     home: Home
     key: Key
     keys: Keys
@@ -140,6 +145,8 @@ en:
     error: 
       access_denied: "Access denied"
       assign_roles: "Could not assign account role to user"
+      could_not_create_group_key: "Could not assign this key to the group"
+      could_not_create_membership: "Could not add this user to the group"
       create_account_first: "You need to be assigned to an account first"
       guest_required: "You must be logged out to access this page"
       login_required: "You must be logged in to access this page"
@@ -152,10 +159,14 @@ en:
         other: "Successfully updated %{count} keys"
       created_account: "Successfully created account %{account}"
       created_footer_link: "Successfully created footer link"
+      created_group: "Successfully created group"
+      created_group_key: "Successfully assigned this key to the group"
       created_key: "Successfully created key %{key}"
+      created_membership: "Successfully added user to this group"
       created_site: "Successfully created site %{site}"
       created_user: "Successfully created user"
       created_user_account: "Successfully added this user to the account"
+      deleted_group: "Successfully deleted group"
       deleted_key: "Successfully deleted key %{key}"
       deleted_site: "Successfully deleted site %{site}"
       logged_in: "Successfully logged in"
@@ -163,22 +174,112 @@ en:
       password_instructions_sent: "Instructions to reset your password have been emailed to you. Please check your email."
       password_updated: "Password successfully updated"
       removed_footer_link: "Successfully removed footer link"
+      removed_group_key: "Successfully removed the group from this key"
+      removed_member: "Successfully removed user from this group"
       removed_user_account: "Successfully removed user from this account"
       switched_account: "Successfully switched to account %{account}"
       updated_account: "Successfully updated account %{account}"
       updated_footer_link: "Successfully updated footer link"
+      updated_group: "Successfully updated group"
       updated_key: "Successfully updated key %{key}"
       updated_settings: "Successfully updated settings"
       updated_site: "Successfully updated site %{site}"
       updated_user: "Successfully updated user"
+  groups: 
+    edit: 
+      edit_group: "Edit group"
+    form: 
+      could_not_create_group: "Coul not create group"
+      name: Name
+      save_group: "Save group"
+    index: 
+      all_groups: "All groups"
+      confirm_delete: "Are you sure you want to delete this group? This operation can not be undone."
+      delete: Delete
+      edit: Edit
+      members: Members
+      name: Name
+      new_group: "New group"
+      no_groups_configured: "No groups configured"
+      no_groups_found: "No groups found"
+      options: Options
+    new: 
+      new_group: "New group"
+    show: 
+      add: "Add User"
+      confirm_delete: "Are you sure you want to remove this user from this group? This operation can not be undone."
+      delete: Remove
+      edit_group: "Edit group"
+      email: Email
+      group: Group
+      members: Members
+      name: Name
+      options: Options
+  keys: 
+    all_keys: 
+      all_keys: "All keys"
+    edit: 
+      edit_key_for_site: "Edit key for site %{site}"
+    edit_multiple: 
+      check_fields_you_want_to_change: "Check the fields you want to change."
+      description: Description
+      edit_multiple_keys: 
+        one: "Edit 1 key"
+        other: "Edit %{count} keys"
+      password: Password
+      show_all: "Show all"
+      update_keys: "Update keys"
+      username: Username
+    fill: 
+      error: 
+        not_logged_in: "You are not logged into TinyVault"
+        site_not_found: "The current site was not found in TinyVault account '%{account}'"
+    form: 
+      could_not_create_key: "Could not create key"
+      description: Description
+      password: Password
+      save_key: "Save key"
+      username: Username
+    index: 
+      keys_for_site: "Keys for Site %{site}"
+      new_key: "New key"
+    list: 
+      all: "Select all"
+      delete: Delete
+      description: Description
+      edit: Edit
+      edit_checked: "Edit Selected"
+      invert: "Invert selection"
+      none: "Select none"
+      options: Options
+      really_delete_key: "Do you really want to delete this key? This operation can not be undone."
+      site: Site
+      username: Username
+    new: 
+      new_key_for_site: "New Key for Site %{site}"
+    show: 
+      add: Add
+      add_group: "Add group"
+      confirm_delete: "Are you sure you want to remove the group from this key? This operation can not be undone."
+      delete: Delete
+      edit_key: "Edit key"
+      group: Group
+      name: Name
+      no_group_keys_found: "No assigned groups found"
+      options: Options
+    tabs: 
+      edit: Edit
+      information: Information
   layouts: 
     accounts: Accounts
     admin: Admin
     close_flash: Close
     edit_footer: "Edit footer"
     github_project_page: "Github project page"
+    groups: Groups
     guest_greeter: "Welcome, Guest!"
     home: Home
+    keys: Keys
     login: Login
     logout: Logout
     quick_links: "Quick links"
@@ -189,49 +290,6 @@ en:
     user_greeter: "Welcome, %{user}"
     version: "Version %{version}, revision %{revision}"
     you_are_here: "You are here"
-  keys: 
-    edit: 
-      edit_key_for_site: "Edit key for site %{site}"
-    fill: 
-      error: 
-        not_logged_in: "You are not logged into TinyVault"
-        site_not_found: "The current site was not found in TinyVault account '%{account}'"
-    edit_multiple: 
-      check_fields_you_want_to_change: "Check the fields you want to change."
-      description: Description
-      edit_multiple_keys: 
-        one: "Edit 1 key"
-        other: "Edit %{count} keys"
-      password: "Password"
-      show_all: "Show all"
-      update_keys: "Update keys"
-      username: "Username"
-    form: 
-      could_not_create_key: "Could not create key"
-      description: Description
-      password: "Password"
-      save_key: "Save key"
-      username: "Username"
-    index: 
-      keys_for_site: "Keys for Site %{site}"
-      new_key: "New key"
-    list: 
-      all: "Select all"
-      delete: Delete
-      description: "Description"
-      edit: Edit
-      edit_checked: "Edit Selected"
-      invert: "Invert selection"
-      none: "Select none"
-      options: Options
-      really_delete_key: "Do you really want to delete this key? This operation can not be undone."
-      site: Site
-      username: "Username"
-    new: 
-      new_key_for_site: "New Key for Site %{site}"
-    tabs: 
-      edit: "Edit"
-      information: "Information"
   password_reset_mailer: 
     subject: "Password Reset Instructions"
   password_resets: 
@@ -260,7 +318,7 @@ en:
       edit_site: "Edit Site %{site}"
     form: 
       could_not_create_site: "Could not create site"
-      description: "Description"
+      description: Description
       home_url: "Home page URL"
       login_url: "Login form URL"
       name: "Site Name"
@@ -269,11 +327,11 @@ en:
       all_sites: "All Sites"
       confirm_delete: "Are you sure you want to delete this site and all keys? This operation can not be undone."
       delete: Delete
-      description: "Description"
+      description: Description
       edit: Edit
-      home: "Home"
-      login: "Login"
-      name: "Name"
+      home: Home
+      login: Login
+      name: Name
       new_site: "New Site"
       no_sites_configured: "No sites configured."
       no_sites_found: "No sites found."
@@ -281,16 +339,16 @@ en:
     new: 
       new_site: "New Site"
     show: 
-      description: "Description"
+      description: Description
       edit_site: "Edit Site"
-      go: "Go"
-      home: "Home"
-      login: "Login"
+      go: Go
+      home: Home
+      login: Login
       site: "Site %{site}"
     tabs: 
       edit: Edit
       information: Information
-      keys: "Keys"
+      keys: Keys
   start: 
     index: 
       add_existing_user_to_account: "Add existing user to account %{account}"

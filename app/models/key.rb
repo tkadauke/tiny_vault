@@ -2,9 +2,12 @@ class Key < ActiveRecord::Base
   belongs_to :site
   belongs_to :user
   
+  has_many :group_keys
+  has_many :groups, :through => :group_keys
+  
   validates_presence_of :site_id, :username, :password
   
-  def self.find_for_list(filter, status, find_options)
+  def self.find_for_list(filter, find_options)
     with_search_scope(filter) do
       find(:all, find_options.merge(:include => {:site => :account}))
     end

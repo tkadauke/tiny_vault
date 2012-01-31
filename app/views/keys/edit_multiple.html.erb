@@ -1,6 +1,6 @@
 <h2><%= t('.edit_multiple_keys', :count => @keys.size) %></h2>
 
-<%= form_for :key, :url => update_multiple_account_site_keys_path(@account, @site), :html => { :method => :put, :class => 'form' } do |f| %>
+<%= form_for :key, :url => update_multiple_keys_path, :html => { :method => :put, :class => 'form' } do |f| %>
   <ul class="asterisk" id="key_list">
     <% @keys.each_with_index do |key, i| %>
       <li<%= ' style="display: none"' if i >= 10 %>>
