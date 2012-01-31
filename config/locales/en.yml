@@ -122,6 +122,7 @@ en:
     home: Home
     key: Key
     keys: Keys
+    login: Login
     new: New
     password_resets: "Reset password"
     settings: Settings
@@ -218,6 +219,8 @@ en:
   keys: 
     all_keys: 
       all_keys: "All keys"
+      my_keys: "My Keys"
+      other_keys: "Other Keys"
     edit: 
       edit_key_for_site: "Edit key for site %{site}"
     edit_multiple: 
