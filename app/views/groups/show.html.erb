@@ -30,8 +30,8 @@
 <% if current_user.can_add_user_to_group?(@group) %>
   <%= form_for [@account, @group, Membership.new], :html => { :class => 'form' } do |f| %>
     <p class="form_item">
-      <span class="label"><%= f.label :email, t('.email'), :class => 'required' %></span>
-      <%= f.text_field :email %>
+      <span class="label"><%= f.label :user_id, t('.name'), :class => 'required' %></span>
+      <%= f.select :user_id, @account.users.collect { |user| [user.full_name, user.id] } %>
     </p>
 
     <p><%= f.submit t('.add') %></p>
