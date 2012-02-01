@@ -7,6 +7,10 @@ class Key < ActiveRecord::Base
   
   validates_presence_of :site_id, :username, :password
   
+  attr_accessor :add_group_id, :delete_group_id
+  
+  after_save :enable_or_disable_group
+  
   def self.find_for_list(filter, find_options)
     with_search_scope(filter) do
       find(:all, find_options.merge(:include => {:site => :account}))
@@ -45,5 +49,10 @@ protected
     with_scope :find => { :conditions => conditions } do
       yield
     end
+  end
+  
+  def enable_or_disable_group
+    group_keys.create(:group_id => add_group_id) if add_group_id
+    groups.delete(Group.find(delete_group_id)) if delete_group_id
   end
 end

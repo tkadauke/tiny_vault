@@ -43,6 +43,24 @@
           </p>
         </td>
       </tr>
+      <tr>
+        <td><%= f.check_box :bulk_update_add_group_id, :onclick => "$('key_add_group_id').disabled = !this.checked" %></td>
+        <td>
+          <p class="form_item">
+            <span class="label"><%= f.label :bulk_update_add_group_id, t('.add_group_id') %></span>
+            <%= f.select :add_group_id, Group.all.collect { |g| [g.name, g.id] }, {}, { :disabled => true } %>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td><%= f.check_box :bulk_update_delete_group_id, :onclick => "$('key_delete_group_id').disabled = !this.checked" %></td>
+        <td>
+          <p class="form_item">
+            <span class="label"><%= f.label :bulk_update_delete_group_id, t('.delete_group_id') %></span>
+            <%= f.select :delete_group_id, Group.all.collect { |g| [g.name, g.id] }, {}, { :disabled => true } %>
+          </p>
+        </td>
+      </tr>
     </tbody>
   </table>
   

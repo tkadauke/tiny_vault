@@ -87,13 +87,13 @@ class KeysController < ApplicationController
 
   def update_multiple
     can_edit_keys!(@account) do
-      @keys = @account.keys.find(params[:key_ids])
+      @keys = @account.keys.readonly(false).find(params[:key_ids])
       updated = @keys.map do |key|
         key.bulk_update(params[:key])
       end
 
       flash[:notice] = I18n.t("flash.notice.bulk_updated_keys", :count => updated.count(true))
-      redirect_to account_site_keys_path(@account, @site)
+      redirect_to keys_path
     end
   end
 
