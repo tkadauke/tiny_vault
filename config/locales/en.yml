@@ -224,7 +224,9 @@ en:
     edit: 
       edit_key_for_site: "Edit key for site %{site}"
     edit_multiple: 
+      add_group_id: "Add to group"
       check_fields_you_want_to_change: "Check the fields you want to change."
+      delete_group_id: "Remove from group"
       description: Description
       edit_multiple_keys: 
         one: "Edit 1 key"
