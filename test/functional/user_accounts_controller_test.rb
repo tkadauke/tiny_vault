@@ -8,6 +8,11 @@ class UserAccountsControllerTest < ActionController::TestCase
     
     login_with @user
   end
+  
+  test "should redirect on index" do
+    get :index, :account_id => @account
+    assert_redirected_to account_path(@account)
+  end
 
   test "should get new" do
     get :new, :account_id => @account

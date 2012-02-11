@@ -4,5 +4,6 @@ class Membership < ActiveRecord::Base
 
   attr_accessor :email
   
+  validates_presence_of :user_id, :group_id
   validates_uniqueness_of :user_id, :scope => :group_id
 end

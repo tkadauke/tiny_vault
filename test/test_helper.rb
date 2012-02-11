@@ -27,6 +27,10 @@ class ActionController::TestCase
   
   def assert_access_denied
     assert_response :redirect
-    assert_equal 'You can not do that', flash[:error]
+    assert_equal I18n.t("flash.error.access_denied"), flash[:error]
+  end
+  
+  def assert_login_required
+    assert_redirected_to login_path
   end
 end

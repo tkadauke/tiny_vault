@@ -8,6 +8,7 @@ class UserSessionsControllerTest < ActionController::TestCase
   
   test "should create user session" do
     john = User.create(:full_name => 'John Doe', :email => 'john.doe@example.com', :password => '12345', :password_confirmation => '12345')
+    logout
     
     post :create, :user_session => { :email => 'john.doe@example.com', :password => '12345' }
     assert user_session = UserSession.find

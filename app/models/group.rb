@@ -7,6 +7,7 @@ class Group < ActiveRecord::Base
   has_many :group_keys
   has_many :keys, :through => :group_keys
 
+  validates_presence_of :name
   has_permalink :name
 
   def to_param
