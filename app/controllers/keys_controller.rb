@@ -31,13 +31,15 @@ class KeysController < ApplicationController
         if logged_in?
           @account = current_user.current_account
           @site = @account.sites.find_by_login_domain(params[:domain])
-          @keys = @site.keys_for_user(current_user)
-          if @site && @keys.size > 0
-            render :text => "%s(%s);" % [params[:callback], @keys.to_json]
-          elsif !@site
-            render_json_error I18n.t('keys.fill.error.site_not_found', :account => @account.name)
+          if @site
+            @keys = @site.keys_for_user(current_user)
+            if @keys.size > 0
+              render :text => "%s(%s);" % [params[:callback], @keys.to_json]
+            else
+              render_json_error I18n.t('keys.fill.error.no_keys_found', :account => @account.name)
+            end
           else
-            render_json_error I18n.t('keys.fill.error.no_keys_found', :account => @account.name)
+            render_json_error I18n.t('keys.fill.error.site_not_found', :account => @account.name)
           end
         else
           render_json_error I18n.t('keys.fill.error.not_logged_in')
