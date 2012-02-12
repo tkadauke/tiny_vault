@@ -14,12 +14,12 @@
     <tbody>
       <% @sites.each do |site| %>
         <tr>
-          <td><%= link_to highlight(site.name, @search_filter.query), account_site_keys_path(site.account, site) %></td>
-          <td><%= site.description %></td>
+          <td><%= link_to highlight(truncate(site.name, :length => 30), @search_filter.query), account_site_keys_path(site.account, site) %></td>
+          <td><%= truncate(site.description, :length => 30) %></td>
           <td>
             <%= action_list do |a| %>
-              <% a.link_to t('.home'), site.home_url %>
-              <% a.link_to t('.login'), site.login_url %>
+              <% a.link_to t('.home'), site.home_url, :target => '_blank' %>
+              <% a.link_to t('.login'), site.login_url, :target => '_blank' %>
               <% if current_user.can_edit_sites?(@account) %>
                 <% a.link_to t('.edit'), edit_account_site_path(site.account, site) %>
                 <% a.link_to t('.delete'), account_site_path(site.account, site), :method => :delete, :confirm => t('.confirm_delete') if current_user.can_delete_sites?(@account) %>

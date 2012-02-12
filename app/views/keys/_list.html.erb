@@ -38,8 +38,14 @@
             <% if current_user.can_edit_keys?(@account) %>
               <td><%= check_box_tag "key_ids[]", key.id %></td>
             <% end %>
-            <td><%= link_to highlight(key.description, @search_filter.query), account_site_key_path(key.site.account, key.site, key) %></td>
-            <td><%= link_to highlight(key.site.name, @search_filter.query), account_site_keys_path(key.site.account, key.site) %></td>
+            <td>
+              <% if key.description %>
+                <%= link_to highlight(truncate(key.description, :length => 30), @search_filter.query), account_site_key_path(key.site.account, key.site, key) %>
+              <% else %>
+                <%= link_to t(".login"), account_site_key_path(key.site.account, key.site, key) %>
+              <% end %>
+            </td>
+            <td><%= link_to highlight(truncate(key.site.name, :length => 30), @search_filter.query), account_site_keys_path(key.site.account, key.site) %></td>
             <td><%= link_to highlight(key.username, @search_filter.query), account_site_key_path(key.site.account, key.site, key) %></td>
             <% if current_user.can_edit_keys?(@account) %>
               <td>
