@@ -8,6 +8,8 @@ class Account < ActiveRecord::Base
   has_many :keys, :through => :sites
   has_many :groups
   
+  has_many :key_imports
+  
   scope :ordered_by_name, :order => 'name ASC'
   
   def self.from_param!(param)

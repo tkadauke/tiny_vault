@@ -7,6 +7,7 @@ gem 'less'
 gem "acts_as_list"
 gem 'permalink_fu'
 gem 'will_paginate', '3.0.2'
+gem 'fastercsv'
 
 group :development do
   gem 'sqlite3'

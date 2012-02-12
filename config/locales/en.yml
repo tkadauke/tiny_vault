@@ -121,6 +121,7 @@ en:
     groups: Groups
     home: Home
     key: Key
+    key_imports: "Key imports"
     keys: Keys
     login: Login
     new: New
@@ -216,6 +217,43 @@ en:
       members: Members
       name: Name
       options: Options
+  key_import: 
+    fields: 
+      description: Description
+      home_url: "Home URL"
+      login_url: "Login URL"
+      password: Password
+      site_name: "Site name"
+      username: Username
+  key_imports: 
+    form: 
+      could_not_import: "Could not import"
+      csv_data: "CSV Data"
+      description: Description
+      import: Import
+      preview: Preview
+    index: 
+      delete: Delete
+      description: Description
+      imported_at: "%{time} ago"
+      imports_for_account: "Imports for account %{account}"
+      new_import: "New Import"
+      nothing_found: "No imports found"
+      options: Options
+      really_delete_import: "Do you really want to delete this import and all imported keys?"
+      site: Site
+      when: When
+      who: Who
+    new: 
+      field_names: "Field names: %{fields}"
+      instructions: "Enter the fields in the given order, separated by commas"
+      new_import: "New Import"
+    preview: 
+      preview: Preview
+      site: Site
+      url: URL
+    show: 
+      keys_for_import: "Keys from import"
   keys: 
     all_keys: 
       all_keys: "All keys"
@@ -363,6 +401,7 @@ en:
       bookmarklet: "Drag this bookmarklet into your Bookmarks bar to get one-click access to your keys:"
       create_account: "Create account"
       get_started: "Get Started"
+      import_keys: "Import keys"
       manage_users: "Manage users for account %{account}"
       no_accounts: "There are no accounts for this user yet."
       quick_links: "Quick links"

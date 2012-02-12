@@ -17,7 +17,7 @@
       <tfoot>
         <tr>
           <td></td>
-          <td colspan="5">
+          <td colspan="4">
             <%= action_list do |a| %>
               <% a.link_to_function t(".all"), %{$$('table input[type="checkbox"]').each(function(element) { element.checked = true })} %>
               <% a.link_to_function t(".none"), %{$$('table input[type="checkbox"]').each(function(element) { element.checked = false })} %>

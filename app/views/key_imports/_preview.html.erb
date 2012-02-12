@@ -1,0 +1,23 @@
+<h3><%= t(".preview") %></h3>
+
+<table class="list">
+  <thead>
+    <tr>
+      <% KeyImport.fields.each do |field| %>
+        <th><%= field %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @key_import.rows.each do |row| %>
+      <tr>
+        <td><%= row.site_name %></td>
+        <td><%= row.home_url %></td>
+        <td><%= row.login_url %></td>
+        <td><%= row.description %></td>
+        <td><%= row.username %></td>
+        <td><%= row.password %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

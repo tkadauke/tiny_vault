@@ -1,6 +1,7 @@
 class Key < ActiveRecord::Base
   belongs_to :site
   belongs_to :user
+  belongs_to :key_import
   
   has_many :group_keys
   has_many :groups, :through => :group_keys

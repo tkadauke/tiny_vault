@@ -1,0 +1,5 @@
+<h2><%= t(".keys_for_import") %></h2>
+
+<p><%= @key_import.description %></p>
+
+<%= render :partial => "/keys/list", :locals => { :keys => @key_import.keys } %>

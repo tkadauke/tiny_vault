@@ -31,6 +31,9 @@
       <% if current_user.can_edit_account?(current_user.current_account) %>
         <li><%= link_to t('.manage_users', :account => current_user.current_account.name), account_path(current_user.current_account) %>
       <% end %>
+      <% if current_user.can_import_keys?(current_user.current_account) %>
+        <li><%= link_to t('.import_keys'), key_imports_path %>
+      <% end %>
     </ul>
   <% end %>
 <% end %>

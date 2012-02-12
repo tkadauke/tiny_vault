@@ -1,0 +1,11 @@
+<h2><%= t(".new_import") %></h2>
+
+<p><%= t(".instructions") %></p>
+
+<p><%= t(".field_names", :fields => KeyImport.fields.join(', ')) %></p>
+
+<%= render :partial => 'preview' if @preview %>
+
+<% form_for [@key_import], :html => { :class => 'form' } do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+<% end %>

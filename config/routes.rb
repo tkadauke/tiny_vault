@@ -29,6 +29,8 @@ TinyVault::Application.routes.draw do
   
   match 'keys/fill', :via => :get
   
+  resources :key_imports
+  
   resources :sites
   resources :keys do
     collection do
