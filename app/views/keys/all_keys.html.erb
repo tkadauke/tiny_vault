@@ -1,11 +1,12 @@
 <h2><%= t('.all_keys') %></h2>
 
-<%= render :partial => "/shared/filter", :locals => { :url => keys_path(@account) } %>
+<%= render :partial => "/shared/filter", :locals => { :url => keys_path } %>
 
-<h3><%= t('.my_keys') %></h3>
+<%= tabs(:selected => @filter.to_sym) do |a| %>
+  <% a.tab :mine, t('.my_keys'), keys_path(:filter => 'mine') %>
+  <% a.tab :all, t('.all_keys'), keys_path(:filter => 'all') %>
+<% end %>
 
-<%= render :partial => "list", :locals => { :keys => @my_keys } %>
-
-<h3><%= t('.other_keys') %></h3>
-
-<%= render :partial => "list", :locals => { :keys => @account_keys } %>
+<div id="keys">
+  <%= render :partial => "list", :locals => { :keys => @keys } %>
+</div>

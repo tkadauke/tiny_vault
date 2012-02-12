@@ -9,10 +9,20 @@ class KeysController < ApplicationController
     if @site
       @keys = @site.keys.find_for_list(@search_filter, :order => 'keys.username ASC')
     else
-      @my_keys = current_user.keys.find_for_list(@search_filter, :order => 'keys.username ASC')
-      @account_keys = current_user.keys_from_account(@account).find_for_list(@search_filter, :order => 'keys.username ASC')
-      render :action => 'all_keys'
+      @filter = current_user.soft_settings.get_or_set("keys.filter", params[:filter], :default => 'mine')
+      
+      if @filter == 'mine'
+        @keys = current_user.keys.find_for_list(@search_filter, :order => 'keys.username ASC')
+      else
+        @keys = current_user.keys_from_account(@account).find_for_list(@search_filter, :order => 'keys.username ASC')
+      end
+      
+      render :action => 'all_keys' unless request.xhr?
     end
+    
+    render :update do |page|
+      page.replace_html 'keys', :partial => 'list', :locals => { :keys => @keys }
+    end if request.xhr?
   end
 
   def fill

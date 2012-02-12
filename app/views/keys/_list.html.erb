@@ -1,53 +1,57 @@
-<%= form_tag edit_multiple_keys_path do %>
-  <table class="list">
-    <thead>
-      <tr>
-        <% if current_user.can_edit_keys?(@account) %>
-          <th></th>
-        <% end %>
-        <th><%= t('.description') %></th>
-        <th><%= t('.site') %></th>
-        <th><%= t('.username') %></th>
-        <% if current_user.can_edit_keys?(@account) %>
-          <th><%= t('.options') %></th>
-        <% end %>
-      </tr>
-    </thead>
-    <% if current_user.can_edit_keys?(@account) %>
-      <tfoot>
-        <tr>
-          <td></td>
-          <td colspan="4">
-            <%= action_list do |a| %>
-              <% a.link_to_function t(".all"), %{$$('table input[type="checkbox"]').each(function(element) { element.checked = true })} %>
-              <% a.link_to_function t(".none"), %{$$('table input[type="checkbox"]').each(function(element) { element.checked = false })} %>
-              <% a.link_to_function t(".invert"), %{$$('table input[type="checkbox"]').each(function(element) { element.checked = !element.checked })} %>
-            <% end %>
-
-            <%= submit_tag t(".edit_checked") %>
-          </td>
-        </tr>
-      </tfoot>
-    <% end %>
-    <tbody>
-      <% keys.each do |key| %>
+<% if keys.empty? %>
+  <p><%= t(".nothing_found") %></p>
+<% else %>
+  <%= form_tag edit_multiple_keys_path do %>
+    <table class="list">
+      <thead>
         <tr>
           <% if current_user.can_edit_keys?(@account) %>
-            <td><%= check_box_tag "key_ids[]", key.id %></td>
+            <th></th>
           <% end %>
-          <td><%= link_to key.description, account_site_key_path(key.site.account, key.site, key) %></td>
-          <td><%= link_to highlight(key.site.name, @search_filter.query), account_site_keys_path(key.site.account, key.site) %></td>
-          <td><%= link_to highlight(key.username, @search_filter.query), account_site_key_path(key.site.account, key.site, key) %></td>
+          <th><%= t('.description') %></th>
+          <th><%= t('.site') %></th>
+          <th><%= t('.username') %></th>
           <% if current_user.can_edit_keys?(@account) %>
-            <td>
+            <th><%= t('.options') %></th>
+          <% end %>
+        </tr>
+      </thead>
+      <% if current_user.can_edit_keys?(@account) %>
+        <tfoot>
+          <tr>
+            <td></td>
+            <td colspan="4">
               <%= action_list do |a| %>
-                <% a.link_to t('.edit'), edit_account_site_key_path(key.site.account, key.site, key) if current_user.can_edit_key?(key) %>
-                <% a.link_to t('.delete'), account_site_key_path(key.site.account, key.site, key), :method => :delete, :confirm => t('.really_delete_key') if current_user.can_delete_keys?(@account) %>
+                <% a.link_to_function t(".all"), %{$$('table input[type="checkbox"]').each(function(element) { element.checked = true })} %>
+                <% a.link_to_function t(".none"), %{$$('table input[type="checkbox"]').each(function(element) { element.checked = false })} %>
+                <% a.link_to_function t(".invert"), %{$$('table input[type="checkbox"]').each(function(element) { element.checked = !element.checked })} %>
               <% end %>
+
+              <%= submit_tag t(".edit_checked") %>
             </td>
-          <% end %>
-        </tr>
+          </tr>
+        </tfoot>
       <% end %>
-    </tbody>
-  </table>
+      <tbody>
+        <% keys.each do |key| %>
+          <tr>
+            <% if current_user.can_edit_keys?(@account) %>
+              <td><%= check_box_tag "key_ids[]", key.id %></td>
+            <% end %>
+            <td><%= link_to highlight(key.description, @search_filter.query), account_site_key_path(key.site.account, key.site, key) %></td>
+            <td><%= link_to highlight(key.site.name, @search_filter.query), account_site_keys_path(key.site.account, key.site) %></td>
+            <td><%= link_to highlight(key.username, @search_filter.query), account_site_key_path(key.site.account, key.site, key) %></td>
+            <% if current_user.can_edit_keys?(@account) %>
+              <td>
+                <%= action_list do |a| %>
+                  <% a.link_to t('.edit'), edit_account_site_key_path(key.site.account, key.site, key) if current_user.can_edit_key?(key) %>
+                  <% a.link_to t('.delete'), account_site_key_path(key.site.account, key.site, key), :method => :delete, :confirm => t('.really_delete_key') if current_user.can_delete_keys?(@account) %>
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 <% end %>

@@ -256,9 +256,8 @@ en:
       keys_for_import: "Keys from import"
   keys: 
     all_keys: 
-      all_keys: "All keys"
+      all_keys: "All Keys"
       my_keys: "My Keys"
-      other_keys: "Other Keys"
     edit: 
       edit_key_for_site: "Edit key for site %{site}"
     edit_multiple: 
@@ -295,6 +294,7 @@ en:
       edit_checked: "Edit Selected"
       invert: "Invert selection"
       none: "Select none"
+      nothing_found: "Nothing found"
       options: Options
       really_delete_key: "Do you really want to delete this key? This operation can not be undone."
       site: Site

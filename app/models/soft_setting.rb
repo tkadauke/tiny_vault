@@ -13,4 +13,12 @@ class SoftSetting < ActiveRecord::Base
   def self.unset(key)
     find_by_key(key).destroy rescue nil
   end
+  
+  def self.get_or_set(key, value, options = {})
+    if value
+      set(key, value)
+    else
+      get(key, options)
+    end
+  end
 end

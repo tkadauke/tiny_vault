@@ -44,7 +44,7 @@ protected
       # SQL result set, whereas in the frontend only actual dots get highlighted. We replace dots with underscores,
       # which match a single character in SQL LIKE queries.
       sql_like = filter.query.gsub('.', '_')
-      ['keys.username LIKE ? OR sites.name LIKE ?', "%#{sql_like}%", "%#{sql_like}%"]
+      ['keys.description LIKE ? OR keys.username LIKE ? OR sites.name LIKE ?', "%#{sql_like}%", "%#{sql_like}%", "%#{sql_like}%"]
     end
     
     with_scope :find => { :conditions => conditions } do

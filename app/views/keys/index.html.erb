@@ -4,7 +4,7 @@
 
 <%= render :partial => "/shared/filter", :locals => { :url => account_site_keys_path(@account, @site, :report => params[:report]) } %>
 
-<div id="checks">
+<div id="keys">
   <%= render :partial => "list", :locals => { :keys => @keys } %>
 </div>
 
