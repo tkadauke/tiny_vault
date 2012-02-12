@@ -1,13 +1,13 @@
 class KeyImport < ActiveRecord::Base
   class Row
-    attr_reader :site_name, :home_url, :login_url, :description, :username, :password
+    attr_reader :site_name, :site_description, :home_url, :login_url, :description, :username, :password
     
     def initialize(csv_row)
-      @site_name, @home_url, @login_url, @description, @username, @password = *csv_row
+      @site_name, @site_description, @home_url, @login_url, @description, @username, @password = *csv_row
     end
     
     def create!(key_import)
-      site = Site.find_or_create_by_account_id_and_name(:account_id => key_import.account.id, :name => @site_name, :home_url => @home_url, :login_url => @login_url)
+      site = Site.find_or_create_by_account_id_and_name(:account_id => key_import.account.id, :name => @site_name, :description => @site_description, :home_url => @home_url, :login_url => @login_url)
       site.keys.create(:key_import => key_import, :user => key_import.user, :description => @description, :username => @username, :password => @password)
     end
   end
@@ -22,6 +22,7 @@ class KeyImport < ActiveRecord::Base
   def self.fields
     [
       I18n.t("key_import.fields.site_name"),
+      I18n.t("key_import.fields.site_description"),
       I18n.t("key_import.fields.home_url"),
       I18n.t("key_import.fields.login_url"),
       I18n.t("key_import.fields.description"),
