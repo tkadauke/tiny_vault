@@ -9,14 +9,14 @@ gem 'permalink_fu'
 gem 'will_paginate', '3.0.2'
 gem 'fastercsv'
 
+gem 'mysql'
+
 group :development do
-  gem 'sqlite3'
   gem 'ya2yaml'
   gem 'i18n_tools'
 end
 
 group :test do
-  gem 'sqlite3'
   gem 'mocha', :require => false
   gem 'rcov', :require => false
 end
